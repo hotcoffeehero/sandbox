@@ -1,8 +1,11 @@
 
 const redux = require('redux')
+const redux_logger = require('redux-logger')
+
 const createStore = redux.createStore
 const combine_reducers = redux.combineReducers
-
+const apply_middleware = redux.applyMiddleware
+const logger = redux_logger.createLogger()
 
 const SELL_CAKE = 'SELL_CAKE'
 const SELL_ICECREAM = 'SELL_ICECREAM'
@@ -60,7 +63,7 @@ const root_reducer = combine_reducers({
 })
 
 // Responsibility 1: Redux Store holding the application state
-const store = createStore(root_reducer) //This line of code executes first
+const store = createStore(root_reducer, apply_middleware(logger)) //This line of code executes first
 // 2: exposing the getState method, 
 //    which gives the current state in the store
 console.log('Initial State:', store.getState())//Executes second

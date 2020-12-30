@@ -1,0 +1,61 @@
+Three Principles of Redux
+
+1. The state of your whole application is stored in an object tree within a single STORE
+2. The only way to change the state is to emit an ACTION, an object describing what happened.
+3. To specify how the state tree is transformed by actions, you write pure REDUCERS
+
+
+
+Second Principle.
+To update the state of your app, you need to let Redux know about it with an ACTION. 
+You can't update the state directly
+In code, an action is represented as an object with a TYPE property indicating your intention. Here the property is a string. 
+{
+	type: BUY_CAKE
+}
+
+
+Third Principle:
+Reducer = (previousState, action) => newState
+In the cake shop analogy, the REDUCER is the shopkeeper
+In code:
+
+const reducer = (state,action) => {
+	switch (action.type) {
+		case BUY_CAKE: return {
+			numOfCakes: state.numOfCakes - 1
+		}
+	}
+}
+
+Overview
+The app can't update the state directly. 
+The app is subscribed to the Redux Store
+If the app wants to update the state, it has to dispatch an action
+Once the action has been dispatched, the Reducer that handles it updates the state in the Redux Store. 
+That value is passed on to the App. 
+
+
+
+Video 6 - Reducers
+Specify how the app's state changes in response to actions sent to the store
+Functions that accept state and action as arguments and returns the next state of the application
+
+(previousState, action)=> newState
+
+Video 7 - Store
+One store per app
+Responsibilities
+1. It holds the application state
+2. It allows access to state via getState()
+3. It provides a method called dispatch(action)
+4. Registers listeners via subscribe(listener)
+5. Handles unregistering of listeners via the function returned by subscribe
+
+
+Middleware - vid 11
+The suggested way to extend Redux with custom functionality
+Provides a third party extension point between dispatching an action and the moment it reaches the reducer
+
+Async Actions - vid 12
+Asynchronous API calls to fetch data from an end point and use that data in our application (?)
