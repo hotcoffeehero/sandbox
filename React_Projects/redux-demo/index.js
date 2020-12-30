@@ -1,6 +1,7 @@
 
 const redux = require('redux')
 const createStore = redux.createStore
+const combine_reducers = redux.combineReducers
 
 
 const SELL_CAKE = 'SELL_CAKE'
@@ -21,18 +22,26 @@ sell_icecream = () => {
     }
 }
 
-const initialState = {
-    qty_cake: 10, 
+const initial_cake_state = {
+    qty_cake: 10
+}
+const initial_ice_state = {
     qty_icecream: 20
 }
 
 //The reducer is matching the action type with the switch cases
-const reducer = (state = initialState, action)=>{
+const cake_reducer = (state = initial_cake_state, action)=>{
     switch(action.type) {
         case SELL_CAKE: return {
             ...state,
             qty_cake: state.qty_cake - 1
         }
+        default: return state
+    }
+}
+
+const ice_reducer = (state = initial_ice_state, action) => {
+    switch(action.type){
         case SELL_ICECREAM: return {
             ...state,
             qty_icecream: state.qty_icecream - 1
@@ -40,8 +49,18 @@ const reducer = (state = initialState, action)=>{
         default: return state
     }
 }
+
+
+//combining reducers
+//The argument is an object, key-val pairs of which correspond to an individual reducer
+//createstore will now accept this as its new parameter
+const root_reducer = combine_reducers({
+    cake: cake_reducer,
+    ice: ice_reducer
+})
+
 // Responsibility 1: Redux Store holding the application state
-const store = createStore(reducer) //This line of code executes first
+const store = createStore(root_reducer) //This line of code executes first
 // 2: exposing the getState method, 
 //    which gives the current state in the store
 console.log('Initial State:', store.getState())//Executes second
