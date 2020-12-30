@@ -3,44 +3,61 @@ const redux = require('redux')
 const createStore = redux.createStore
 
 
-const BUY_CAKE = 'BUY_CAKE'
+const SELL_CAKE = 'SELL_CAKE'
+const SELL_ICECREAM = 'SELL_ICECREAM'
 
 //Action creator
-function buyCake () {
+sell_Cake = () => {
     //This is the action
     return {
-        type: BUY_CAKE,
+        type: SELL_CAKE,
         info: 'First Redux Action'
+    }
+}
+sell_icecream = () => {
+    return {
+        type: SELL_ICECREAM,
+        info: 'Second Redux Action'
     }
 }
 
 const initialState = {
-    numberOfCakes: 10
+    qty_cake: 10, 
+    qty_icecream: 20
 }
 
+//The reducer is matching the action type with the switch cases
 const reducer = (state = initialState, action)=>{
     switch(action.type) {
-        case BUY_CAKE: return {
+        case SELL_CAKE: return {
             ...state,
-            numberOfCakes: state.numberOfCakes - 1
+            qty_cake: state.qty_cake - 1
+        }
+        case SELL_ICECREAM: return {
+            ...state,
+            qty_icecream: state.qty_icecream - 1
         }
         default: return state
     }
 }
 // Responsibility 1: Redux Store holding the application state
-const store = createStore(reducer)
+const store = createStore(reducer) //This line of code executes first
 // 2: exposing the getState method, 
 //    which gives the current state in the store
-console.log('Initial State:', store.getState())
+console.log('Initial State:', store.getState())//Executes second
 
 //4: Allow the app to subscribe to changes in the store
 //   this is done using the subscribe method
-const unsubscribe = store.subscribe(()=>console.log('Updated State: ', store.getState()))
+const unsubscribe = store.subscribe(()=>console.log('Updated State: ', store.getState()))//listening for state changes
 
 //3: Store provides the dispatch method to update the state
-store.dispatch(buyCake())
-store.dispatch(buyCake())
-store.dispatch(buyCake())
+store.dispatch(sell_Cake())//This is the first action
+store.dispatch(sell_Cake())
+store.dispatch(sell_Cake())
+store.dispatch(sell_icecream())
+store.dispatch(sell_icecream())
+store.dispatch(sell_icecream())
+
 
 //5: Unsubscribe from the store by calling the function 
 //   returned by the subscribe method
