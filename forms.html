@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+
+<body>
+    <form action="results.html" method="GET" enctype="multipart/form-data">
+        <!-- NAME -->
+        <div>
+            <label for='name'>Name</label>
+            <br />
+            <input type='text' name='name' id='name' placeholder="username" required>
+        </div>
+        <!-- EMAIL -->
+        <div>
+            <label for=email>Email</label>
+            <br />
+            <input type='email' name='email' id='email' placeholder="email" required>
+        </div>
+        <!-- AGE -->
+        <div>
+            <label for='age'>Age</label>
+            <br />
+            <input type='number' name='email' id='age' placeholder="age" min="1" max="200" step="1">
+        </div>
+        <!-- BERFDAY -->
+        <div>
+            <label for='birthdate'>Birthdate</label>
+            <br />
+            <input type='date' name='date' id='birthdate' min="1900-01-01" max="">
+            
+        </div>
+        <!-- PASSWORD -->
+        <div>
+            <label>Password
+            <br />
+            <input type='password' name='password' placeholder="password" required>
+            </label>
+        </div>
+        <!-- FAVORITE BAND CHECKBOX -->
+        <div>
+            Favorite Music
+            <div>
+                <input type="checkbox" name="the-beatles" id="the-beatles">
+                <label for="the-beatles">The Beatles</label>
+            </div>
+            <div>
+                <input type="checkbox" name="jack-johnson" id="the-beatles">
+                <label for="jack-johnson">Jack Johnson</label>
+            </div>
+            <div>
+                <input type="checkbox" name="rhcp" id="rhcp">
+                <label for="rhcp">RHCP</label>
+            </div>
+        </div>
+        <!-- RADIO -->
+        <div>
+            Gender
+            <div>
+                <input type="radio" name="gender" id="male" value="male">
+                <label for="male">Male</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id='female' value="female">
+                <label for="female">Female</label>
+            </div>
+        </div>
+        <!-- SELECT EYE COLOR -->
+        <div>
+            <label for="eye_color">Eye Color</label>
+            <br/>
+            <select name="eye_color" id="eye_color">
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="brown">Brown</option>
+            </select>
+        </div>
+        <!-- TEXTAREA -->
+        <div>
+            <label for="bio">Bio</label>
+            <br/>
+            <textarea name="bio" id="bio" placeholder="Tell us about yourself"></textarea>
+        </div>
+        <!-- HIDDEN -->
+        <div>
+            <hidden type='hidden' name='value' value='Herro'></hidden>
+        </div>
+        <!-- FILE -->
+        <div>
+            <label for="file">File</label>
+            <input type="file" name="file" id="file">
+        </div>
+        <!-- PHONE -->
+        <div>
+            <label for="phone">Phone</label>
+            <br />
+            <input type="tel" name="phone" id="phone">
+        </div>
+        <!-- URL -->
+        <div>
+            <label for="url">URL</label>
+            <br />
+            <input type="url" name="url" id="url">
+        </div>
+        <div>
+            <label for="color">Color</label>
+            <br />
+            <input type="color" name="color" id="color">
+        </div>
+        <!-- BUTTON -->
+        <div>
+            <br />
+            <button type='reset'>Reset</button>
+            <button type='submit'>Submit</button>
+        </div>
+
+    </form>
+</body>
+
+</html>
