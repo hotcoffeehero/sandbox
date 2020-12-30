@@ -1,3 +1,4 @@
+
 const redux = require('redux')
 const createStore = redux.createStore
 
@@ -44,3 +45,34 @@ store.dispatch(buyCake())
 //5: Unsubscribe from the store by calling the function 
 //   returned by the subscribe method
 unsubscribe()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Codevolution React-Redux Tutorial
+//https://www.youtube.com/watch?v=YAevAj6X6XU&list=PLC3y8-rFHvwheJHvseC3I0HuYI2f46oAK&index=7
