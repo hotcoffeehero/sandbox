@@ -7,7 +7,7 @@ const NewGoal = (props) => {
 
     const newGoal = {
       id: Math.random().toString(),
-      text: '',
+      text: 'Deploy to Hotcoffee HQ',
     }
 
     props.onAddGoal(newGoal)
