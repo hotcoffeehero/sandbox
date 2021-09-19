@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const NewPlace = () => {
-  return <h1>These are the new places!</h1>
-}
+  return <h2>NewPlace Works!</h2>
+};
 
-export default NewPlace
+export default NewPlace;
