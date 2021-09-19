@@ -1,12 +1,13 @@
 import React from 'react'
 import UsersList from '../components/UsersList'
+import '../../dummy_fots/me.jpg'
 
 const Users = () => {
   const USERS = [
     {
       id: 'u1',
       name: 'Clinton A.',
-      image: 'https://photos.app.goo.gl/mHuoPNaUBbDZ3MAx8',
+      image: 'me.jpg',
       places: 3,
     },
   ]
