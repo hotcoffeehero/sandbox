@@ -1,13 +1,24 @@
-const fs = require('fs')
+const http = require('http')
 
-const greetings =
-  'Hello, my name is Captain ClinTON and I have a hot wife and a huge penis and lots of money and friends and everybody wants to be like me.'
+const server = http.createServer((req, res) => {
+  console.log('Incoming Request!')
+  console.log(req.method, req.url)
 
-fs.writeFile('user-data.txt', 'Name: ' + greetings, (err) => {
-  if (err) {
-    console.log(err)
-    return
+  if (req.method === 'POST') {
+    let body = ''
+    req.on('end', () => {
+      const username = body.split('=')[1]
+      res.end('<h1>' + username + '</h1>')
+    })
+    req.on('data', (chunk) => {
+      body += chunk
+    })
   } else {
-    console.log('File Wrrrrritten.')
+    res.setHeader('Content-Type', 'text/html')
+    res.end(
+      '<form method="POST"><input type="text" name="username"><button type="submit">CREATE USER</button></form>'
+    )
   }
 })
+
+server.listen(5000)
