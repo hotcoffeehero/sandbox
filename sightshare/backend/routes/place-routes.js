@@ -20,6 +20,13 @@ router.get('/:pid', (req, res, next) => {
   const place = DUMMY_PLACES.find((p) => {
     return p.id === placeId
   })
+
+  if (!place) {
+    const error = new Error("...couldn't find what you were looking for.")
+    error.code(404)
+    throw error
+  }
+
   res.json({ place })
 })
 
@@ -28,6 +35,12 @@ router.get('/user/:uid', (req, res, next) => {
   const place = DUMMY_PLACES.find((p) => {
     return p.creator === userId
   })
+
+  if (!place) {
+    const error = new Error("...couldn't find what you were looking for.")
+    error.code(404)
+    next(error)
+  }
   res.json({ place })
 })
 
