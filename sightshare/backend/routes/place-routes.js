@@ -23,7 +23,7 @@ router.get('/:pid', (req, res, next) => {
 
   if (!place) {
     const error = new Error("...couldn't find what you were looking for.")
-    error.code(404)
+    error.code = 404
     throw error
   }
 
@@ -38,8 +38,8 @@ router.get('/user/:uid', (req, res, next) => {
 
   if (!place) {
     const error = new Error("...couldn't find what you were looking for.")
-    error.code(404)
-    next(error)
+    error.code = 404
+    return next(error)
   }
   res.json({ place })
 })
