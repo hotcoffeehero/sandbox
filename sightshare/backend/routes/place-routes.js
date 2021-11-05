@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const HttpError = require('../models/http-error')
+
 const DUMMY_PLACES = [
   {
     id: 'p1',
@@ -22,9 +24,8 @@ router.get('/:pid', (req, res, next) => {
   })
 
   if (!place) {
-    const error = new Error("...couldn't find what you were looking for.")
-    error.code = 404
-    throw error
+    throw new HttpError("...couldn't find what you were looking for.", 404)
+    
   }
 
   res.json({ place })
@@ -37,9 +38,8 @@ router.get('/user/:uid', (req, res, next) => {
   })
 
   if (!place) {
-    const error = new Error("...couldn't find what you were looking for.")
-    error.code = 404
-    return next(error)
+    
+    return next(new HttpError("...couldn't find a place for that id."))
   }
   res.json({ place })
 })
