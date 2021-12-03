@@ -1,26 +1,28 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
-import Users from './user/pages/Users'
-import NewPlace from './places/pages/NewPlace'
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom';
 
-function App() {
-  return <Router>
+import Users from './user/pages/Users';
+import NewPlace from './places/pages/NewPlace';
 
-    <Switch>
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/places/new" exact>
+          <NewPlace />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </Router>
+  );
+};
 
-    <Route path="/" exact>
-      <Users />
-    </Route>
-
-    <Route path="/places/new" exact>
-      <NewPlace />
-    </Route>
-
-    <Redirect to="/" />
-
-    </Switch>
-
-  </Router>
-}
-
-export default App
+export default App;
